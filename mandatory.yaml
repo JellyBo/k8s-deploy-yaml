@@ -39,7 +39,7 @@ spec:
             timeoutSeconds: 10
             failureThreshold: 30
             periodSeconds: 3
-            initialDelaySeconds: 250
+            initialDelaySeconds: 30
             successThreshold: 1
           readinessProbe:
             httpGet:
