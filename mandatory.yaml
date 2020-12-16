@@ -28,6 +28,9 @@ spec:
           volumeMounts:
             - mountPath: /do1cloud
               name: data
+            - name: license-lic
+              mountPath: /root/license.lic
+              subPath: license.lic
           livenessProbe:
             httpGet:
               path: /actuator/health
@@ -67,6 +70,13 @@ spec:
       volumes:
         - name: data
           emptyDir: {}
+        - name: license-lic
+          secret:
+            secretName: licenselic
+            items:
+              - key: license.lic
+                path: license.lic
+            defaultMode: 420
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
